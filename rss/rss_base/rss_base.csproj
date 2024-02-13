@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>4fcc0cc5-33b2-46df-a774-18d232704e08</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>.</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Grpc\Protos\SessionManagerAsClient.proto" />
+    <None Remove="Grpc\Protos\SessionManagerAsServer.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Asp.Versioning.Mvc" Version="6.4.1" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.60.0" />
+    <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.60.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Grpc\Protos\SessionManagerAsClient.proto" GrpcServices="None">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Protobuf>
+    <Protobuf Include="Grpc\Protos\SessionManagerAsServer.proto" GrpcServices="Both">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Protobuf>
+  </ItemGroup>
+
+</Project>

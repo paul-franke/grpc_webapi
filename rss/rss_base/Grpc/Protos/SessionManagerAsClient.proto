@@ -1,0 +1,23 @@
+//syntax = "proto3";
+
+//option csharp_namespace = "GrpcSessionManager";
+
+//package grpc;
+
+// The manager service definition.
+//service SessionManagerGrpcClient {
+
+  // Sends a command to set the session status
+//  rpc NotifySessionStatus (SessionStatusData) returns (Result);
+//}
+
+// The Data Model  containing the session'status.
+//message SessionStatusData {
+//  string Guid = 1;
+//  int32 Status = 2;
+//}
+
+// The command result.
+//message Result {
+//  int32 result = 1;
+//}

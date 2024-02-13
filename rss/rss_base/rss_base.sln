@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34525.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "rss_base", "rss_base.csproj", "{83DF50AD-371F-4C67-8034-0DC6FE40EB0D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Test", "..\Test\Api.Test.csproj", "{3B556887-7D2B-4410-B31A-B3F9A8B9BDFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{83DF50AD-371F-4C67-8034-0DC6FE40EB0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83DF50AD-371F-4C67-8034-0DC6FE40EB0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83DF50AD-371F-4C67-8034-0DC6FE40EB0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83DF50AD-371F-4C67-8034-0DC6FE40EB0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B556887-7D2B-4410-B31A-B3F9A8B9BDFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B556887-7D2B-4410-B31A-B3F9A8B9BDFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B556887-7D2B-4410-B31A-B3F9A8B9BDFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B556887-7D2B-4410-B31A-B3F9A8B9BDFB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9D7018EF-7470-4B3E-8154-D89C4EA7C0C4}
+	EndGlobalSection
+EndGlobal
