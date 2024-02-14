@@ -4,7 +4,7 @@
 gRPC_webAPI is a microservice that bridges the REST with  gPRC protocol. A typical use case for this microservice is when you want to allow direct external access via REST to a hybrid gRPC internal landscape.
 
 ## Features
-- gPRC
+- gRPC
 - WebApi
 - HTTP2
 - TLS
