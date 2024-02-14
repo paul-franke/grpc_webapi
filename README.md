@@ -1,4 +1,4 @@
-# grpc_webapi A microservice supporting both WebApi and gRPC
+# grpc_webapi: A microservice supporting both WebApi and gRPC
 
 
 gRPC_webAPI is a microservice that bridges the REST with  gRPC protocol. A typical use case for this microservice is when you want to allow direct external access via REST to a hybrid gRPC internal landscape.
