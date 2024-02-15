@@ -34,7 +34,7 @@ gRPC_webAPI is a microservice that bridges the REST with  gRPC protocol. A typic
 4. Run
 
 ## Description of the sample app: A tiny session_manager
-To demo this sample microservice there is functionality implemented for a tiny session_manager. 
+To demo this microservice there is functionality implemented for a tiny session_manager. 
 
 It's the session_manager's job to setup a session. The external environment is serviced by the WebApi. The Internal environment is serviced by gRPC.
 
