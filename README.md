@@ -38,9 +38,9 @@ To demo this microservice there is functionality implemented for a tiny session_
 
 It's the session_manager's job to setup a session. The external environment is serviced by the WebApi. The Internal environment is serviced by gRPC.
 
-It's the app responsibility to do the bookkeeping of the session information. As such it's the responsibility of the session manager to create  a new session. The creation and control of actual sessions of not the responsibility of the session manager. All in line with the Single responsibility principle.  
+It's the app's responsibility to do the bookkeeping of the session information. As such the session_manager hands out a token (GUID) for a to be created session. The creation and control of actual sessions should be done by another microservice using that token, all in line with the Single responsibility principle.  
 
-The tiny session_manager uses at this moment an in memory cache. This will be persisted to the Postgres database in a future release. 
+The tiny session_manager uses at this moment an in memory cache. This will be persisted to a Postgres database in a future release. 
 
 ### Design session_manager
 
@@ -51,12 +51,9 @@ Please see the file: ./design/SessionManagement.drawio
 - Request a running session to stopped.  
 - Status queries for the session
 
-Note: this WebApi only hands-out session-tokes. With the session token the external agent should request a real session via another microservice. This other microservice is not part of this sample microservice. 
-
 ### gRPC functionality
 gRPC is in charge of the internal communication.
-- Communicate Status information with the process hosting the session.
-- Push session control commands onto the process hosting the session. 
+- Communicate with "internal" processes hosting the sessions.
 
 ## Testing the microservice
 
