@@ -36,7 +36,7 @@ gRPC_WebApi is a microservice that services both the REST and gRPC protocol. A t
 ## Description of the sample app: A tiny session_manager
 To demo this microservice there is functionality implemented for a tiny session_manager. 
 
-It's the session_manager's job to setup a session. The external environment is serviced by the WebApi. The Internal environment is serviced by gRPC.
+The external environment is serviced by the WebApi. The Internal environment is serviced by gRPC.
 
 It's the app's responsibility to do the bookkeeping of the session information. As such the session_manager hands out a token (GUID) for a to be created session. The creation and control of actual sessions should be done by another microservice using that token, all in line with the Single responsibility principle.  
 
