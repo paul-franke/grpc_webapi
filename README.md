@@ -52,7 +52,6 @@ Please see the file: ./design/SessionManagement.drawio
 - Status queries for the session
 
 ### gRPC functionality
-gRPC is in charge of the internal communication.
 - Communicate with "internal" processes hosting the sessions.
 
 ## Testing the microservice
