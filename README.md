@@ -67,7 +67,7 @@ Swagger allows interaction with all endpoints.
 
 Dependent upon your preferences you can use Postman or grpcurl. In the tools-directory there is a win64-version included of grpcurl. 
 
-Below there will be the grpcurl-commands given to communicate with the microservice.
+Below the grpcurl-commands are given to communicate with the microservice.
 
 Note: change your port in accordance with your run parameters.
 
