@@ -14,7 +14,7 @@ gRPC_WebApi is a microservice that services both the REST and gRPC protocol. A t
 - No authorization nor authentication has been implemented.
 - This is a first release. Microservice has been developed on windows, so expect some platform dependencies still to be present.
 - This code is meant as a starter, so not production ready.
-- During install you will need to install a self signed development certificate for docker support. This is one of features I will reconsider for a next release. 
+- During install you will need to install a self signed development certificate for docker support. This is one of the features I will reconsider for a next release. 
 
 ## Setup
 
