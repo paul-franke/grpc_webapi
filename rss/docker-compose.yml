@@ -7,19 +7,55 @@ services:
       context: ./rss_base/.
       dockerfile: Dockerfile
     ports:
-     - "39771:443"
+     - "443:443"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80;
       - ASPNETCORE_Kestrel__Certificates__Default__Password=password
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/cert.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
     volumes:
-      - ~/.aspnet/https:/https:ro
+      - ./certificate:/https:ro
     extra_hosts:
       host.docker.internal: host-gateway
     networks:
       - backend
   
+  grpc_client:
+    image: 'grpc_client:latest'
+    build:
+      context: ./Grpc_Client/.
+      dockerfile: Dockerfile
+    depends_on:
+      - rss_base
+    environment:
+      - GrpcConfigurationOptions__LeafCertificateThumbString=${LEAF}
+      - GrpcConfigurationOptions__IntermediateCertificateThumbString=${INTERMEDIATE}
+      - GrpcConfigurationOptions__CertificatePinning=true
+      - GrpcConfigurationOptions__url=https://host.docker.internal:443
+      - GrpcConfigurationOptions__GrpcClientTimeOut=5
+    extra_hosts:
+      host.docker.internal: host-gateway
+    networks:
+      - backend
+
+  rest_client:
+    image: 'rest_client:latest'
+    build:
+      context: ./Rest_Client/.
+      dockerfile: Dockerfile
+    depends_on:
+      - rss_base
+    environment:
+      - RestClientConfigurationOptions__LeafCertificateThumbString=${LEAF}"
+      - RestClientConfigurationOptions__IntermediateCertificateThumbString=${INTERMEDIATE}
+      - RestClientConfigurationOptions__CertificatePinning=true
+      - RestClientConfigurationOptions__url=https://host.docker.internal:443
+      - RestClientConfigurationOptions__RestClientTimeOut=5
+    extra_hosts:
+      host.docker.internal: host-gateway
+    networks:
+      - backend
+
   db:
     image: postgres
     container_name: local_pgdb

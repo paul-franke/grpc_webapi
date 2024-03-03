@@ -15,7 +15,7 @@ namespace GrpcSessionManager
             _sessionManager = sessionManager;
         }
 
-        public override Task<ResultCode> SetSessionStatus(SessionStatusData request, ServerCallContext context)
+        public override async Task<ResultCode> SetSessionStatus(SessionStatusData request, ServerCallContext context)
         {
             int rc = 0;
             _logger.LogInformation($"Calling SetSessionStatus.");
@@ -26,7 +26,7 @@ namespace GrpcSessionManager
                 rc = 1;    
             }
 
-            return Task.FromResult(new ResultCode
+            return await Task.FromResult(new ResultCode
             {
                 CallResult = rc
             }) ;  
@@ -88,6 +88,5 @@ namespace GrpcSessionManager
             });
         }
     }
-
 }
 

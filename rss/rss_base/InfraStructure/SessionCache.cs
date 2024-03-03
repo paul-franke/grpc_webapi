@@ -14,7 +14,6 @@ namespace rss_base.InfraStructure
 
         public Session? AddOrUpdateSession(Session session)
         {
-
              var cacheEntryOptions = new MemoryCacheEntryOptions().SetPriority(CacheItemPriority.NeverRemove);
             _memoryCache.Set(session.SessionId, session, cacheEntryOptions);
             return GetSession(session.SessionId);

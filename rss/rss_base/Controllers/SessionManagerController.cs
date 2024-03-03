@@ -23,13 +23,13 @@ namespace rss_base.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("GetSessionStatus")]
-        public async Task<ActionResult> GetSessionStatus(Guid id)
+        public async Task<ActionResult> GetSessionStatus( Guid id)
         {
             _logger.LogInformation($"Calling GetSessionStatus.");
             var result = _sessionManager.GetSessionStatus(id);
             if (result != null)
             {
-                return await Task.FromResult(Ok());
+                return await Task.FromResult(Ok(result.ToString()));
             }
             return await Task.FromResult(NotFound());
         }
@@ -37,7 +37,7 @@ namespace rss_base.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("GetSessionAllow")]
-        public async Task<ActionResult<GetSessionAllow>> GetSessionAllow(Guid id)
+        public async Task<ActionResult<GetSessionAllow>> GetSessionAllow( Guid id)
         {
             _logger.LogInformation($"Calling GetSessionStatus.");
             var result = _sessionManager.GetSessionAllow(id);

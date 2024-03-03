@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcSessionClient";
+
+package grpc;
+
+// The manager service definition.
+service SessionManagerServerDefinition {
+
+  // Sends a command to set the session status
+  rpc SetSessionStatus (SessionStatusData) returns (ResultCode);
+
+  // Sends a command to set the session status
+  rpc GetSessionStatus (SessionId) returns (SessionStatusData);
+
+  // Sends a command to set the session AllowList
+  rpc GetSessionAllow(SessionId) returns (SessionAllowData);
+
+}
+
+// The Data Model  containing the session'status.
+message SessionId {
+  string Guid = 1;
+}
+
+// The Data Model  containing the session'status.
+message SessionStatusData {
+  string Guid = 1;
+  int32 Status = 2;
+}
+
+// The Data Model  containing the session' Allow list.
+message SessionAllowData {
+  string Guid = 1;
+  bool Attended = 2;
+  bool UnAttended = 3;
+}
+
+// The command result.
+message ResultCode {
+  int32 CallResult = 1;
+}
