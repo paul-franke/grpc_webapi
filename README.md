@@ -1,7 +1,19 @@
 # grpc_webapi: A microservice supporting both WebApi and gRPC
 
 
+## Server
 gRPC_WebApi is a microservice that services both the REST and gRPC protocol. A typical use case for this microservice is when you want to allow direct external access via REST to a hybrid gRPC internal landscape.
+
+## Clients
+Also included with this repo are two fully functional clients i.e., a gRPC-client and a Rest-client. These client are using a BackGroundService to communicate with the server on a timed basis. 
+
+Both projects can be used a starter for interacting with your own customized server.
+
+### Certificate pinning
+
+Both clients showcase certificate pinning. <https://owasp.org/www-community/controls/Certificate_and_Public_Key_Pinning>
+
+See below on an explanation how to customize the clients for "your to be pinned" certificates.
 
 ## Features
 - gRPC
@@ -9,6 +21,8 @@ gRPC_WebApi is a microservice that services both the REST and gRPC protocol. A t
 - HTTP2
 - TLS
 - Containerized
+- Container pinning
+- Two separate clients using this service
 
 ## Caveats
 - No authorization nor authentication has been implemented.
@@ -21,17 +35,18 @@ gRPC_WebApi is a microservice that services both the REST and gRPC protocol. A t
 ### Docker-setup
 1. Clone repo
 2. Start docker desktop
-3. Execute (on windows):
-
-        ./certificate.bat    
+3. Execute in windows cmd-box:
+      
+        <goto repo root>
+        cd rss
+        certificate.bat 
         docker-compose up
 
 
 ### Using Visual-Studio
 1. Clone repo
 2. Open solution file
-3. Select profile: Docker or local:
-4. Run
+3. Run
 
 ## Description of the sample app: A tiny session_manager
 To demo this microservice there is functionality implemented for a tiny session_manager. 
@@ -59,8 +74,7 @@ Please see the file: ./design/SessionManagement.drawio
 ### WebApi Swagger
 
 Swagger allows interaction with all endpoints. 
-- Docker: https://localhost:39771/swagger
-- Visual-Studio: browser is started automatically.
+- Docker: https://localhost:443/swagger
 
 ### gRPC grpcurl
 
@@ -87,4 +101,5 @@ Note: change your port in accordance with your run parameters.
 
         grpcurl -d "{ \"Guid\" : \"<your session Guid>\", \"Attended\" : true, \"UnAttended\" : true }" localhost:443 grpc.SessionManagerServerDefinition/SetSessionAllow
 
+## The two test-clients
 
