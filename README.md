@@ -150,8 +150,7 @@ Docker spins up the the server `rss_base` and the two test client `grpc_client` 
 
 ## Certificate handling
 
-To allow all clients and the server to use TLS seamlessly between docker and Visual Studio some actions were needed. 
-
+To allow all clients and the server to use TLS seamlessly some actions were needed. 
 The purpose is to let the three-way handshake succeed, see for an explanation <https://cabulous.medium.com/tls-1-2-andtls-1-3-handshake-walkthrough-4cfd0a798164> 
 
 ### Certificate creation
