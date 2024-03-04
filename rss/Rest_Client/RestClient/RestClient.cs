@@ -38,7 +38,7 @@ namespace Rest_Client.RestClient
                 return;
             }
 
-            while (true)
+            while (!stoppingToken.IsCancellationRequested)
             {
                 try
                 {
