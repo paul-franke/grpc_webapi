@@ -97,7 +97,7 @@ Below the grpcurl-commands are given to communicate with the microservice.
 
 - SetSessionStatus
 
-        grpcurl -d "{ \"Guid\" : \"<your session Guid>\", , \"Status\" : <int32> }" localhost:443 grpc.SessionManagerServerDefinition/SetSessionStatus
+        grpcurl -d "{ \"Guid\" : \"<your session Guid>\", \"Status\" : <int32> }" localhost:443 grpc.SessionManagerServerDefinition/SetSessionStatus
 
 - SetSessionAllow
 
