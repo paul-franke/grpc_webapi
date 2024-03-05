@@ -19,44 +19,73 @@ namespace GrpcSessionManager
         {
             int rc = 0;
             _logger.LogInformation($"Calling SetSessionStatus.");
-            var result = _sessionManager.SetSessionStatus( Guid.Parse(request.Guid), (SessionStatus)request.Status);
-            
-            if (!result)
-            {
-                rc = 1;    
-            }
 
+            if (!Guid.TryParse(request.Guid, out _))
+            {
+                _logger.LogWarning($"SetSessionStatus called with invalid Guid/SessionId.");
+                rc = 1;
+            }
+            else
+            {
+                var result = _sessionManager.SetSessionStatus(Guid.Parse(request.Guid), (SessionStatus)request.Status);
+                if (!result)
+                {
+                    _logger.LogWarning($"SetSessionStatus called with unknown Guid/SessionId.");
+                    rc = 1;
+                }
+            }
             return await Task.FromResult(new ResultCode
             {
                 CallResult = rc
             }) ;  
         }
+
         public override Task<ResultCode> SetSessionAllow(SessionAllowData request, ServerCallContext context)
         {
             int rc = 0;
             _logger.LogInformation($"Calling SetSessionAllow.");
-            var result = _sessionManager.SetSessionAllow(Guid.Parse(request.Guid), request.Attended, request.UnAttended);
 
-            if (!result)
+            if (!Guid.TryParse(request.Guid, out _))
             {
+                _logger.LogWarning($"SetSessionAllow called with invalid Guid/SessionId.");
                 rc = 1;
+            }
+            else
+            {
+                var result = _sessionManager.SetSessionAllow(Guid.Parse(request.Guid), request.Attended, request.UnAttended);
+
+                if (!result)
+                {
+                    _logger.LogWarning($"SetSessionAllow called with unknown Guid/SessionId.");
+                    rc = 1;
+                }
             }
             return Task.FromResult(new ResultCode
             {
                 CallResult = rc
             });
         }
+
         public override Task<SessionStatusData> GetSessionStatus(SessionId request, ServerCallContext context)
         {
             _logger.LogInformation($"Calling GetSessionStatus.");
-            var result = _sessionManager.GetSessionStatus(Guid.Parse(request.Guid));
-            if (result != null)
+
+            if (!Guid.TryParse(request.Guid, out _))
             {
-                return Task.FromResult(new SessionStatusData
+                _logger.LogWarning($"GetSessionStatus called with invalid Guid/SessionId.");
+            }
+            else
+            {
+                var result = _sessionManager.GetSessionStatus(Guid.Parse(request.Guid));
+                if (result != null)
                 {
-                    Status = (int) result,
-                    Guid = request.Guid
-                });
+                    return Task.FromResult(new SessionStatusData
+                    {
+                        Status = (int)result,
+                        Guid = request.Guid
+                    });
+                }
+                _logger.LogWarning($"GetSessionStatus called with unknown Guid/SessionId.");
             }
 
             return Task.FromResult(new SessionStatusData
@@ -68,16 +97,25 @@ namespace GrpcSessionManager
 
         public override Task<SessionAllowData> GetSessionAllow(SessionId request, ServerCallContext context)
         {
-            _logger.LogInformation($"Calling GetSessionStatus.");
-            var result = _sessionManager.GetSessionAllow(Guid.Parse(request.Guid));
-            if (result != null)
+            _logger.LogInformation($"Calling GetSessionAllow.");
+
+            if (!Guid.TryParse(request.Guid, out _))
             {
-                return Task.FromResult(new SessionAllowData
+                _logger.LogWarning($"GetSessionAllow called with invalid Guid/SessionId.");
+            }
+            else
+            {
+                var result = _sessionManager.GetSessionAllow(Guid.Parse(request.Guid));
+                if (result != null)
                 {
-                    Attended = result.AttendedAllowed,
-                    UnAttended = result.UnAttendedAllowed,
-                    Guid = result.SessionId.ToString()
-                });
+                    return Task.FromResult(new SessionAllowData
+                    {
+                        Attended = result.AttendedAllowed,
+                        UnAttended = result.UnAttendedAllowed,
+                        Guid = result.SessionId.ToString()
+                    });
+                }
+                _logger.LogWarning($"GetSessionAllow called with unknown Guid/SessionId.");
             }
 
             return Task.FromResult(new SessionAllowData

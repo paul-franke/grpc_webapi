@@ -33,16 +33,16 @@ In docker certificate pinning is turned on and fully functional, for Visual Stud
 
 ### Generic
 1. Clone repo
+2. Execute in windows cmd-box:    
+* goto repo root
+* cd rss
+* certificate.bat
+
 
 ### Docker-setup
 
 1. Start docker desktop
-2. Execute in windows cmd-box:
-      
-        <goto repo root>
-        cd rss
-        certificate.bat 
-        docker-compose up
+2. docker-compose up
 
 Note: For docker hosting, Certificate pinning is on by default.
 
