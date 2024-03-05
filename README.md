@@ -42,7 +42,11 @@ In docker certificate pinning is turned on and fully functional, for Visual Stud
 ### Docker-setup
 
 1. Start docker desktop
-2. docker-compose up
+2. Execute in windows cmd-box:    
+* goto repo root
+* cd rss
+* DockerStart.bat
+
 
 Note: For docker hosting, Certificate pinning is on by default.
 
